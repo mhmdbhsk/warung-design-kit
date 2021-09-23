@@ -1,0 +1,39 @@
+# .gitlab-ci.yml
+
+# Sets the docker image for the job
+image: node:latest
+
+# Sets the stages for the pipeline
+stages:
+  - test
+
+# Cache the dependencies
+cache:
+  key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+  paths:
+    - .yarn
+
+# Installs the dependencies
+before_script:
+  - yarn install --frozen-lockfile --prefer-offline --cache-folder .yarn
+
+
+
+#👇Checks if the branch is main and runs Chromatic with the flag to accept all changes.
+chromatic_publish_auto_accept_changes:
+  stage: test
+  script:
+    - yarn chromatic --project-token=27871fada097 --auto-accept-changes
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
+
+#👇Checks if the branch is not main and runs Chromatic
+chromatic_publish:
+  stage: test
+  script:
+    - yarn chromatic --project-token=27871fada097 --exit-zero-on-changes
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: always
+      allow_failure: true

@@ -1,0 +1,45 @@
+{
+  "name": "@warungkit/ui",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "repository": "https://gitlab.com/koding-works/warung/warung-design-system-kit.git",
+  "author": "Muhammad Bhaska <muhammadbhaska.works@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@emotion/react": "^11.4.1",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/cli": "^6.3.8",
+    "@storybook/react": "^6.3.8",
+    "@testing-library/react": "^12.1.0",
+    "@types/babel__core": "^7.1.16",
+    "@types/jest": "^27.0.1",
+    "@types/react": "^17.0.21",
+    "babel-loader": "^8.2.2",
+    "chromatic": "^5.9.2",
+    "init": "^0.1.2",
+    "jest": "^27.2.0",
+    "prettier": "^2.4.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup": "^2.56.3",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "sb": "^6.3.8",
+    "ts-jest": "^27.0.5",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "npx rollup -c",
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=27871fada097"
+  },
+  "dependencies": {
+    "@stitches/react": "^1.1.0"
+  }
+}
